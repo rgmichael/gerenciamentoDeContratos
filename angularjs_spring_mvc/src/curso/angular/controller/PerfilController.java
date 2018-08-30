@@ -1,0 +1,37 @@
+package curso.angular.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
+import curso.angular.dao.DaoImplementacao;
+import curso.angular.dao.DaoInterface;
+import curso.angular.model.Perfil;
+
+
+@Controller
+@RequestMapping(value = "/perfil")
+public class PerfilController extends DaoImplementacao<Perfil> implements
+	DaoInterface<Perfil> {
+
+public PerfilController(Class<Perfil> persistenceClass) {
+	super(persistenceClass);
+}
+
+/**
+ * Faz o carregamento da lista de barbeiros
+ * @return List<Estados> 
+ * @throws Exception
+ */
+@RequestMapping(value = "listar", method = RequestMethod.GET, headers = "Accept=application/json")
+@ResponseBody
+public byte[] listar() throws Exception {
+	
+	return new Gson().toJson(super.lista()).getBytes("UTF-8");
+}
+
+
+}

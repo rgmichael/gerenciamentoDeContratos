@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx = "http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	default-lazy-init="true">
+
+	<context:annotation-config />
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	 
+	<mvc:resources location="/resources/" mapping="/resources/**" cache-period="5000" />
+
+	<context:component-scan base-package="curso.angular.dao" />
+	<context:component-scan base-package="curso.angular.controller" />
+
+
+	<!-- Data Source -->
+	<bean id="springDataSource" name="springDataSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="false">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/datasouce</value> 
+		</property>
+	</bean>
+	
+	<!--  	
+	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" lazy-init="false"> 
+    	<property name="dataSource" ref="springDataSource"/> 
+    	<property name="baselineOnMigrate" value="true"/>  
+    	<property name="table" value="version"/> 
+    	<property name="sqlMigrationPrefix" value="v"/> 
+    	<property name="sqlMigrationSeparator" value="_"/>
+    	<property name="encoding" value="ISO-8859-1"/> 
+    	<property name="validateOnMigrate" value="true"/>
+	</bean>
+	-->
+	
+	 <bean id="transactionManager" name="transactionManager"   
+         class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="false">
+         <property name="dataSource" ref="springDataSource"/>
+     </bean>  
+      
+          
+      <bean id="agendaController" name="agendaController"
+        class="curso.angular.controller.AgendaController">
+      		<constructor-arg value="curso.angular.model.Agenda"/>
+      </bean>
+      
+      <bean id="barbeiroController" name="barbeiroController"
+        class="curso.angular.controller.BarbeiroController">
+      		<constructor-arg value="curso.angular.model.Usuario"/>
+      </bean>
+      
+      <bean id="servicoController" name="servicoController"
+        class="curso.angular.controller.ServicoController">
+      		<constructor-arg value="curso.angular.model.Servico"/>
+      </bean>
+      
+      <bean id="usuarioController" name="usuarioController"
+        class="curso.angular.controller.UsuarioController">
+      		<constructor-arg value="curso.angular.model.Usuario"/>
+      </bean>
+      
+      <bean id="clienteController" name="clienteController"
+        class="curso.angular.controller.ClienteController">
+      		<constructor-arg value="curso.angular.model.Usuario"/>
+      </bean>
+      
+      <bean id="equipamentoController" name="equipamentoController"
+        class="curso.angular.controller.EquipamentoController">
+      		<constructor-arg value="curso.angular.model.Equipamento"/>
+      </bean>
+      
+      <bean id="fabricanteController" name="fabricanteController"
+        class="curso.angular.controller.FabricanteController">
+      		<constructor-arg value="curso.angular.model.Fabricante"/>
+      </bean>
+      
+      <bean id="eventoController" name="eventoController"
+        class="curso.angular.controller.EventoController">
+      		<constructor-arg value="curso.angular.model.Evento"/>
+      </bean>
+      
+       <bean id="perfilController" name="perfilController"
+        class="curso.angular.controller.PerfilController">
+      		<constructor-arg value="curso.angular.model.Perfil"/>
+      </bean>
+      
+            
+      <bean id="contratanteController" name="contratanteController"
+        class="curso.angular.controller.ContratanteController">
+      		<constructor-arg value="curso.angular.model.Contratante"/>
+      </bean>
+            
+      <bean id="tipoRotinaController" name="tipoRotinaController"
+        class="curso.angular.controller.TipoRotinaController">
+      		<constructor-arg value="curso.angular.model.TipoRotina"/>
+      </bean>
+      
+      <bean id="tipoEquipamentoController" name="tipoEquipamentoController"
+        class="curso.angular.controller.TipoEquipamentoController">
+      		<constructor-arg value="curso.angular.model.TipoEquipamento"/>
+      </bean>
+            
+      <bean id="tipoAreaController" name="tipoAreaController"
+        class="curso.angular.controller.TipoAreaController">
+      		<constructor-arg value="curso.angular.model.TipoArea"/>
+      </bean>
+                  
+      <bean id="rotinaController" name="rotinaController"
+        class="curso.angular.controller.RotinaController">
+      		<constructor-arg value="curso.angular.model.Rotina"/>
+      </bean>
+            
+             
+     <bean id="areaController" name="areaController"
+        class="curso.angular.controller.AreaController">
+      		<constructor-arg value="curso.angular.model.Area"/>
+      </bean>     
+      
+     <bean id="insumoController" name="insumoController"
+        class="curso.angular.controller.InsumoController">
+      		<constructor-arg value="curso.angular.model.Insumo"/>
+      </bean>
+      
+      <bean id="instrumentoController" name="instrumentoController"
+        class="curso.angular.controller.InstrumentoController">
+      		<constructor-arg value="curso.angular.model.Instrumento"/>
+      </bean>        
+      
+      <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="barbeironotificacao@gmail.com" />
+        <property name="password" value="20M06r23#" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
+

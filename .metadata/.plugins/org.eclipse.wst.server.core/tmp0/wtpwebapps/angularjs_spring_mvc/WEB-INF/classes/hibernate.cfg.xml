@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory name="sessionFactory">
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/datasouce</property>
+		<property name="hibernate.current_session_context_class">thread</property> <!-- Contexto de sessão a ser usado -->
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> <!-- Delegada as transações (JDBC) a bases de dados (Padrão) -->
+		<property name="hibernate.jdbc.factory_class">org.hibernate.jdbc.NonBatchingBatcherFactory</property><!-- Selecione um org.hibernate.jdbc.Batcher personalizado -->
+		<property name="hibernate.cache.use_second_level_cache">true</property> <!-- Cache -->
+		<property name="hibernate.transaction.auto_close_session">true</property> <!-- Fecha sessão automaticamente -->
+		<property name="hibernate.hbm2ddl.auto">update</property>  
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+
+		 <mapping class="curso.angular.model.Agenda" />
+		 <mapping class="curso.angular.model.Perfil" />
+		 <mapping class="curso.angular.model.Servico" />
+		 <mapping class="curso.angular.model.Usuario" />
+		
+		 <mapping class="curso.angular.model.Fabricante" />
+		 <mapping class="curso.angular.model.Equipamento" />
+		 <mapping class="curso.angular.model.Evento" />
+		  
+		 <mapping class="curso.angular.model.Area" />
+		 <mapping class="curso.angular.model.Insumo" />
+		 <mapping class="curso.angular.model.Instrumento" />
+		 <mapping class="curso.angular.model.Contratante" />
+		 <mapping class="curso.angular.model.TipoRotina" />
+		 <mapping class="curso.angular.model.TipoEquipamento" />
+		 <mapping class="curso.angular.model.TipoArea" />
+		 <mapping class="curso.angular.model.Rotina" />
+	</session-factory>
+</hibernate-configuration>

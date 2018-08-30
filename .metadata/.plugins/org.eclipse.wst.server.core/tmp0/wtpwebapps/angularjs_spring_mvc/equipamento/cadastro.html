@@ -1,0 +1,91 @@
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+
+<div class="col-lg-9 col-md-8" ng-init="carregarCombos();" >
+
+<h1>Novo Equipamento</h1>
+
+
+	<div class="card">
+		<div class="content">
+			<form id="formEquipamento" ng-submit="salvar();">
+								
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>TAG</label> <input type="text" ng-model="equipamento.tag" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Equipamento</label> <input type="text" ng-model="equipamento.equipamento" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Fabricante</label> 
+							<select ng-model="equipamento.fabricante.id"
+							 id="selectFabricante"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="fabricante in fabricanteesList"  
+							  	value="{{fabricante.id}}">{{fabricante.nome}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Modelo</label> <input type="text" ng-model="equipamento.modelo" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Número de Série</label> <input type="text" ng-model="equipamento.numeroSerie" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Patrimônio</label> <input type="text" ng-model="equipamento.patrimonio" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Unidade</label> <input type="text" ng-model="equipamento.unidade" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				
+
+				<div class="row">
+					<div class="col-md-4">
+					<ul>
+	        			<li ng-repeat="erro in erros track by $index" class="alert alert-danger"> {{erro}}</a></li>
+	    			</ul>
+					</div>
+				</div>	
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Salvar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="voltar();">Voltar</button>
+			</form>
+		</div>
+	</div>
+
+</html>

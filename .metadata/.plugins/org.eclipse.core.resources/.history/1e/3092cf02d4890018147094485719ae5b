@@ -1,0 +1,290 @@
+<html ng-app="agenda">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta http-equiv="Cache-control" content="no-cache">
+
+<title>Loja</title>
+
+
+
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/js/angular-route.js"></script>
+<script type="text/javascript" src="resources/js/angular-resource.js"></script>
+<script type="text/javascript" src="resources/js/angular-animate.js"></script>
+<script type="text/javascript"
+	src="resources/js/angular-locale_pt-br.js"></script>
+
+
+<script type="text/javascript"
+	src="resources/js/bootstrap-checkbox-radio.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-notify.js"></script>
+
+<script type="text/javascript" src="resources/js/chartist.min.js"></script>
+<script type="text/javascript" src="resources/js/demo.js"></script>
+
+<script type="text/javascript" src="resources/js/jquery.mask.js"></script>
+<script type="text/javascript" src="resources/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+
+<link href="resources/css/animate.min.css" rel="stylesheet" />
+
+<link href="resources/css/demo.css" rel="stylesheet" />
+<link href="resources/css/paper-dashboard.css" rel="stylesheet" />
+<link href="resources/css/themify-icons.css" rel="stylesheet" />
+
+<link href="resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="resources/css/themify-icons.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.css" rel="stylesheet">
+
+<script type="text/javascript" src="resources/js/app2.js"></script>
+<script type="text/javascript" src="resources/js/agendaController.js"></script>
+
+
+<script type="text/javascript" src="resources/js/equipamentoController.js"></script>
+<script type="text/javascript" src="resources/js/usuarioController.js"></script>
+
+<script type="text/javascript" src="resources/js/dirPagination.js"></script>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myNavbar");
+    if (x.className === "navbar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navbar";
+    }
+}
+</script>
+
+<style type="text/css">
+
+.form-control {
+    background-color: #fffcf5;
+    border: solid  1px !important; 
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding: 7px 18px;
+    height: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/*----- Toggle Button -----*/
+.toggle-nav {
+	display:none;
+}
+
+/*----- Menu -----*/
+@media screen and (min-width: 860px) {
+	.menu {
+	width:100%;
+	padding:10px 18px;
+	box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+	border-radius:3px;
+	background:#303030;
+	}
+}
+
+.menu ul {
+	display:inline-block;
+}
+
+.menu li {
+	margin:0px 50px 0px 0px;
+	float:left;
+	list-style:none;
+	font-size:17px;
+}
+
+.menu li:last-child {
+	margin-right:0px;
+}
+
+.menu a {
+	text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+	color:#777;
+	transition:color linear 0.15s;
+}
+
+.menu a:hover, .menu .current-item a {
+	text-decoration:none;
+	color:#66a992;
+}
+
+/*----- Search -----*/
+.search-form {
+	float:right;
+	display:inline-block;
+}
+
+.search-form input {
+	width:200px;
+	height:30px;
+	padding:0px 8px;
+	float:left;
+	border-radius:2px 0px 0px 2px;
+	font-size:13px;
+}
+
+.search-form button {
+	height:30px;
+	padding:0px 7px;
+	float:right;
+	border-radius:0px 2px 2px 0px;
+	background:#66a992;
+	font-size:13px;
+	font-weight:600;
+	text-shadow:0px 1px 0px rgba(0,0,0,0.3);
+	color:#fff;
+}
+
+/*----- Responsive -----*/
+@media screen and (max-width: 1150px) {
+	.wrap {
+		width:90%;
+	}
+}
+
+@media screen and (max-width: 970px) {
+	.search-form input {
+		width:120px;
+	}
+}
+
+@media screen and (max-width: 860px) {
+	.menu {
+		position:relative;
+		display:inline-block;
+	}
+
+	.menu ul.active {
+		display:none;
+	}
+
+	.menu ul {
+		width:100%;
+		position:absolute;
+		top:120%;
+		left:0px;
+		padding:10px 18px;
+		box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+		border-radius:3px;
+		background:#303030;
+	}
+
+	.menu ul:after {
+		width:0px;
+		height:0px;
+		position:absolute;
+		top:0%;
+		left:22px;
+		content:'';
+		transform:translate(0%, -100%);
+		border-left:7px solid transparent;
+		border-right:7px solid transparent;
+		border-bottom:7px solid #303030;
+	}
+
+	.menu li {
+		margin:5px 0px 5px 0px;
+		float:none;
+		display:block;
+	}
+
+	.menu a {
+		display:block;
+	}
+
+	.toggle-nav {
+		padding:20px;
+		float:left;
+		display:inline-block;
+		box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+		border-radius:3px;
+		background:#303030;
+		text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+		color:#777;
+		font-size:20px;
+		transition:color linear 0.15s;
+	}
+
+	.toggle-nav:hover, .toggle-nav.active {
+		text-decoration:none;
+		color:#66a992;
+	}
+
+	.search-form {
+		margin:12px 0px 0px 20px;
+		float:left;
+	}
+
+	.search-form input {
+		box-shadow:-1px 1px 2px rgba(0,0,0,0.1);
+	}
+}
+</style>
+
+</head>
+
+<body id="corpo">
+
+<nav class="menu" ng-controller="equipamentoController">
+	<ul class="active">
+		<li class="current-item"><a href="#listequipamento">Home</a></li>
+		<li><a href="#listequipamento">Equipamentos</a></li>
+		<li><a href="#listUsuario">Usuários</a></li>
+		<li><a href="#"  ng-click="sair();"><span class="glyphicon glyphicon-log-out"></span>Sair</a></li>
+	</ul>
+
+	<a class="toggle-nav" href="#">&#9776;</a>
+
+	<form class="search-form">
+		<input type="text">
+		<button>Procurar</button>
+	</form>
+</nav>
+
+
+  
+	
+
+	<div class="container-fluid">
+			<div class="content" ng-view></div>		
+		</div>
+
+</body>
+<script type="text/javascript">		
+	        $(document).ready(function(){		
+  
+            	
+            	location.href="#listequipamento";
+	        });		
+	    		
+	        
+	        jQuery(document).ready(function() {
+	        	jQuery('.toggle-nav').click(function(e) {
+	        		jQuery(this).toggleClass('active');
+	        		jQuery('.menu ul').toggleClass('active');
+
+	        		e.preventDefault();
+	        	});
+	        });
+	     
+	        		
+	    </script>
+
+</html>

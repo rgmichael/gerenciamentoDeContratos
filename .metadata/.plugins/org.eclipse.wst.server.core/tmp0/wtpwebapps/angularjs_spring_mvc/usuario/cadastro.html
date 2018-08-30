@@ -1,0 +1,141 @@
+
+<html>
+<head>
+
+<script type="text/javascript" src="resources/js/jquery.mask.js"></script>
+ <script type="text/javascript">
+ 
+ $('#texto').html('Mostrar');
+ $('#texto2').html('Mostrar');
+ 
+ 	$('#telefone').mask('(99) 9999-9999');
+ 	
+ 	$('#cpf').mask('999.999.999-99');
+     
+    function mostrarOcultarSenha(){
+    	
+    	if($('#texto').html() == "Mostrar"){
+    		
+    		 $("#senha").attr("type", "text");
+    		 $('#texto').html('Ocultar');
+    		 
+    	}else{
+    		
+	   		 $("#senha").attr("type", "password");
+			 $('#texto').html('Mostrar');
+    	}
+    	 
+    	if($('#texto2').html() == "Mostrar"){
+    		
+   		 $("#senha2").attr("type", "text");
+   		 $('#texto2').html('Ocultar');
+   		 
+   		}else{
+   		
+			 $("#senha2").attr("type", "password");
+			 $('#texto2').html('Mostrar');
+   	}
+    	
+    }
+ 	
+ </script>	
+</head>
+
+<div class="container-fluid" ng-init="carregarCombos();" >
+
+<h2>{{titulo}} Usuário</h2>
+<br/>
+
+
+			<form id="formUsuario" ng-submit="cadastrar();">
+								
+				<div class="row">
+					<div class="col-sm-6">
+							<label>Nome</label> 
+							<input type="text" ng-model="usuario.nome" class="form-control border-input" />
+							​	<div ng-show="msgNome" class="alert alert-danger">Informe o Nome</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-3">
+							<label>CPF</label> 
+							<input type="text" id="cpf" ng-model="usuario.cpf" class="form-control border-input" />
+								​<div class="alert alert-danger" ng-show="msgCpfInvalido || msgCpf ">
+									<span ng-show="msgCpf">Informe o CPF </span> <span ng-show="msgCpfInvalido">CPF Inválido</span> 
+								</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-4">
+							<label>E-mail</label> 
+							<input type="email" ng-model="usuario.email" class="form-control border-input" />
+								​<div class="alert alert-danger" ng-show="msgEmailInvalido || msgEmail ">
+									<span ng-show="msgEmail">Informe o E-mail </span> <span ng-show="msgEmailInvalido">E-mail Inválido</span> 
+								</div>
+					</div>
+				</div>
+				 
+				<div class="row">
+					<div class="col-sm-2">
+						   <label>Perfil</label> 
+							<select ng-model="usuario.perfil.id" id="selectPerfil" class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option ng-repeat="perfil in perfilList" value="{{perfil.id}}">{{perfil.descricao}}</option>
+							</select>
+							​	<div ng-show="msgPerfil" class="alert alert-danger">Selecione um Perfil</div>	
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3" >
+						<label>Senha</label>
+						<div class="input-group" >
+					 			<input type="password" id="senha" ng-model="usuario.senha" class="form-control border-input" />
+								<div class="input-group-btn" >
+									<button type="button" class="btn btn-primary" onclick="mostrarOcultarSenha();" ><span id="texto"> </span></button>
+								</div> 
+						</div>	
+							​<div ng-show="msgSenha" class="alert alert-danger">Informe a Senha</div>
+							<div ng-show="msgConfereSenha" class="alert alert-danger">Senhas não conferem</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-3" >
+						<label>Repita a Senha</label>
+
+						<div class="input-group" >
+					 			<input type="password" id="senha2" ng-model="usuario.repeteSenha" class="form-control border-input" />
+								<div class="input-group-btn" >
+									<button type="button" class="btn btn-primary" onclick="mostrarOcultarSenha();" ><span id="texto2"> </span></button>
+								</div> 
+						</div>	
+					
+							​<div ng-show="msgSenha" class="alert alert-danger">Repita a Senha</div>
+							<div ng-show="msgConfereSenha" class="alert alert-danger">Senhas não conferem</div>
+					</div>
+				</div>
+
+	
+				
+			
+				<div class="row">	
+					<div class="col-sm-5">
+						<div ng-show="msgUsuarioJaExiste" class="alert alert-danger">Usuário Já está cadastrado com esse CPF</div>
+					</div>
+				<br/>
+		
+				</div>	
+				
+
+
+				
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-disabled="disableButton">Salvar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="listagem();">Voltar</button>
+				
+			</form>
+	</div>
+
+</html>

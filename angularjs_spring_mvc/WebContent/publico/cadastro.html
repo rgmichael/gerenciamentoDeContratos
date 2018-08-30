@@ -1,0 +1,194 @@
+<html ng-app="agenda">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8" />
+
+<title>Loja</title>
+
+
+
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../resources/js/angular.min.js"></script>
+<script type="text/javascript" src="../resources/js/angular-route.js"></script>
+<script type="text/javascript" src="../resources/js/angular-resource.js"></script>
+<script type="text/javascript" src="../resources/js/angular-animate.js"></script>
+<script type="text/javascript"
+	src="../resources/js/angular-locale_pt-br.js"></script>
+
+
+<script type="text/javascript"
+	src="../resources/js/bootstrap-checkbox-radio.js"></script>
+<script type="text/javascript" src="../resources/js/bootstrap-notify.js"></script>
+<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/chartist.min.js"></script>
+<script type="text/javascript" src="../resources/js/demo.js"></script>
+
+<script type="text/javascript" src="../resources/js/jquery.mask.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-ui.js"></script>
+
+<link href="../resources/css/animate.min.css" rel="stylesheet" />
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../resources/css/demo.css" rel="stylesheet" />
+<link href="../resources/css/paper-dashboard.css" rel="stylesheet" />
+<link href="../resources/css/themify-icons.css" rel="stylesheet" />
+
+<link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="../resources/css/themify-icons.css" rel="stylesheet">
+<link href="../resources/css/jquery-ui.css" rel="stylesheet">
+
+<script type="text/javascript" src="../resources/js/app.js"></script>
+<script type="text/javascript" src="../resources/js/usuarioController.js"></script>
+
+<style type="text/css">
+
+#mydiv {  
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color:#ffffffe6;
+    opacity: .8;
+ }
+
+.ajax-loader {
+    position: absolute;
+    width:100%;
+    height:100%;
+    display: block;     
+}
+</style>
+
+</head>
+
+
+
+<body id="corpo">
+
+<div class="col-lg-9 col-md-8" ng-controller="usuarioController">
+<h1>Cadastro</h1>
+
+<div id="mydiv" ng-show="disableButton" >
+    <img src="../resources/img/wait.gif" class="ajax-loader"/>
+</div>
+
+	<div class="card">
+		<div class="content">
+			<form id="formCliente" ng-submit="salvar();">
+				<div class="row">
+				
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Nome*</label> <input type="text" ng-model="usuario.nome"
+								class="form-control border-input" placeholder="Nome" id="nome"
+								>
+						</div>
+					</div>
+						</div>
+					<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>CPF*</label> <input type="text" ng-model="usuario.cpf" id="cpf" name="cpf" 
+								class="form-control border-input" placeholder="CPF"
+								>
+						</div>
+					</div>
+					
+					</div>
+					
+						<div class="row">
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="endereco">E-mail*</label> <input type="email" id="email"
+								 class="form-control border-input" 
+								ng-model="usuario.email" placeholder="E-mail">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+				
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Senha* </label><img id="olho" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII="
+/>
+							 <input type="password" id="senha"
+								ng-model="usuario.senha" class="form-control border-input"
+								placeholder="Senha">
+						</div>
+					</div>
+					<div class="col-md-1">
+						<div class="form-group"><label></label>
+
+						</div>
+					
+						</div>
+						</div>
+
+				
+				
+					<div class="row">
+					<div class="col-md-6">
+						<div class="form-group"><label>URL da foto</label>
+						<input id="url" type="text" ng-model="usuario.foto" class="form-control border-input" placeholder="Url da sua foto">
+<img class="img-responsive center-block" src="{{usuario.foto}}">
+						</div>
+					</div>
+				
+
+				</div>
+					<div class="row">
+									<div class="col-md-3">
+						<div class="form-group">
+							<label>Telefone</label> <input type="text" id="telefone"
+								ng-model="usuario.telefone" class="form-control border-input"
+								placeholder="Telefone" >
+
+						</div>
+					</div>
+	</div>
+			
+*Campos Obrigatórios
+
+					
+
+					
+				</div>
+				
+				
+				
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-disabled="disableButton">Cadastrar</button>
+						<button type="button" class="btn btn-info btn-fill btn-wd"
+					ng-click="voltar();">Voltar</button>
+					
+			
+
+	
+
+			</form>
+		</div>
+	</div>
+ <script type="text/javascript">
+ 	$('#telefone').mask('(99) 9999-9999');
+ 	$('#cpf').mask('999.999.999-99');
+ 	 $("#olho").mousedown(function () {
+         $("#senha").attr("type", "text");
+     });
+
+     $("#olho").mouseup(function () {
+         $("#senha").attr("type", "password");
+     });
+ 	
+ </script>	
+ </body>
+</html>

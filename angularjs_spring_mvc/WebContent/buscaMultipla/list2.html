@@ -1,0 +1,141 @@
+<html ng-app="agenda">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8" />
+</head>
+
+<div>
+	<br>
+	<hr>
+</div>
+
+<div ng-controller="fabricanteController" ng-init="listarFabricantes();" class="table-responsive" >
+
+<h1>Fabricantes</h1> 
+
+<div ng-show="fabricantes.length == 0">
+	<span>- Sem registros</span>
+</div> 
+
+<div ng-show="fabricantes.length > 0">
+
+<br/>
+ <div class="row">
+  	<div class="col-md-3">
+      	<input type="text" ng-model="procurar" class="form-control" placeholder="Procurar...">
+  	</div>
+
+</div>
+
+<br/>
+<div class="table-responsive" >
+		<table class="table table-hover">
+			<thead>
+					<td><b>Nome</b></td>
+					<td><b>Descrição</b></td>
+					<td><b>Responsavel</b></td>					
+			</thead>
+			<tbody>
+				 <tr dir-paginate="fabricante in fabricantes|filter:procurar |itemsPerPage:5">
+					<td>{{fabricante.nome}}</td>
+					<td>{{fabricante.descricao}}</td>
+					<td>{{fabricante.responsael}}</td>	
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+	<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+
+<div class="modal fade" id="confirm" role="dialog">
+  <div class="modal-dialog modal-md">
+
+    <div class="modal-content">
+      <div class="modal-body">
+            <p>confirma a exclusão do fabricante?</p>
+      </div>
+      <div class="modal-footer">
+         <button type="button" data-dismiss="modal" class="btn btn-danger" ng-click="confirmarRemocao();">Sim</button>
+            <button type="button" data-dismiss="modal" class="btn btn-default">Não</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+</div>
+
+
+<div>
+	<br>
+	<hr>
+</div>
+
+
+
+
+
+<div ng-controller="instrumentoController" ng-init="listarInstrumentos();" class="table-responsive" >
+
+<h1>Instrumentos</h1>
+
+<div ng-show="instrumentos.length == 0">
+	<span>- Sem registros</span>
+</div> 
+
+<div ng-show="instrumentos.length > 0">
+	<br/>
+	 <div class="row">
+	  	<div class="col-md-3">
+	      	<input type="text" ng-model="procurar" class="form-control" placeholder="Procurar...">
+	  	</div>
+	
+	</div>
+	
+	<br/>
+	<div class="table-responsive" >
+			<table class="table table-hover">
+				<thead>
+						<td><b>TAG</b></td>
+						<td><b>Fabricante</b></td>
+						<td><b>Modelo</b></td>					
+						<td><b>Numero de Patrimônio</b></td>
+						<td><b>Número de Série</b></td>
+						<td><b>Certificado de Calibração</b></td>
+				</thead>
+				<tbody>
+					 <tr dir-paginate="instrumento in instrumentos|filter:procurar |itemsPerPage:5">
+						<td>{{instrumento.tag}}</td>
+						<td>{{instrumento.fabricante.nome}}</td>
+						<td>{{instrumento.modelo}}</td>					
+						<td>{{instrumento.patrimonio}}</td>
+						<td>{{instrumento.numeroSerie}}</td>
+						<td>{{instrumento.certificadoCalibracao}}</td>
+					</tr>
+	
+				</tbody>
+			</table>
+		</div>	
+		<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+	
+	<div class="modal fade" id="confirm" role="dialog">
+	  <div class="modal-dialog modal-md">
+	
+	    <div class="modal-content">
+	      <div class="modal-body">
+	            <p>confirma a exclusão do instrumento?</p>
+	      </div>
+	      <div class="modal-footer">
+	         <button type="button" data-dismiss="modal" class="btn btn-danger" ng-click="confirmarRemocao();">Sim</button>
+	            <button type="button" data-dismiss="modal" class="btn btn-default">Não</button>
+	      </div>
+	    </div>
+	
+	  </div>
+	</div>
+</div>
+
+</div>
+
+</html>

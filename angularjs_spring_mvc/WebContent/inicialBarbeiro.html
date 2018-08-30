@@ -1,0 +1,156 @@
+<html ng-app="agenda">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta http-equiv="Cache-control" content="no-cache">
+
+<title>Loja</title>
+
+
+
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/js/angular-route.js"></script>
+<script type="text/javascript" src="resources/js/angular-resource.js"></script>
+<script type="text/javascript" src="resources/js/angular-animate.js"></script>
+<script type="text/javascript"
+	src="resources/js/angular-locale_pt-br.js"></script>
+
+
+<script type="text/javascript"
+	src="resources/js/bootstrap-checkbox-radio.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-notify.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/chartist.min.js"></script>
+<script type="text/javascript" src="resources/js/demo.js"></script>
+
+<script type="text/javascript" src="resources/js/jquery.mask.js"></script>
+<script type="text/javascript" src="resources/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+
+<link href="resources/css/animate.min.css" rel="stylesheet" />
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="resources/css/demo.css" rel="stylesheet" />
+<link href="resources/css/paper-dashboard.css" rel="stylesheet" />
+<link href="resources/css/themify-icons.css" rel="stylesheet" />
+
+<link href="resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="resources/css/themify-icons.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.css" rel="stylesheet">
+
+<script type="text/javascript" src="resources/js/app2.js"></script>
+<script type="text/javascript" src="resources/js/agendaControllerBarbeiro.js"></script>
+<script type="text/javascript" src="resources/js/dirPagination.js"></script>
+
+
+<style type="text/css">
+
+.form-control {
+    background-color: #fffcf5;
+    border: solid  1px !important; 
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding: 7px 18px;
+    height: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 50px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+
+
+</style>
+
+</head>
+
+<body id="corpo">
+
+
+
+	
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid" ng-controller="agendaControllerBarbeiro">
+
+    <ul class="nav navbar-nav">
+     <li><img src="resources/img/Barber-pole-01.gif" height="125" width="120" border="0"></li>
+      <li><a style="font-size: 16px;" href="#agendalistBarbeiro"><h4>Agendamentos </h4></a></li>
+      <li ng-show="false"><a style="font-size: 16px;" href="#agendaBarbeiro/cadastro"><h4>Novo </h4></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 15px; margin-top:30px;">
+ 
+   <li>
+<img src="resources/img/logoff-icon.png" height="50"  ng-click="sair();" width="50" border="0">
+   </li> </ul>
+  </div>
+</nav>
+  
+	
+
+	<div class="container">
+			<div class="content" ng-view></div>		
+		</div>
+
+</body>
+<script type="text/javascript">		
+	        $(document).ready(function(){		
+            	/*$.notify({		
+	                message: "Bem Vindo!"		
+			
+	            },{		
+	                type: 'success',		
+	                timer: 2000		
+	            });	*/
+            	
+            	location.href="#agendalistBarbeiro";
+	        });		
+	    		
+	     
+	        		
+	    </script>
+
+</html>

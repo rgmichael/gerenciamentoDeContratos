@@ -1,0 +1,84 @@
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+
+<div class="col-lg-9 col-md-8" ng-init="carregarCombos();" >
+
+<h1>Novo Instrumento</h1>
+
+
+	<div class="card">
+		<div class="content">
+			<form id="formInstrumento" ng-submit="salvar();">
+								
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>TAG</label> <input type="text" ng-model="instrumento.tag" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Fabricante</label> 
+							<select ng-model="instrumento.fabricante.id"
+							 id="selectFabricante"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="fabricante in fabricanteesList"  
+							  	value="{{fabricante.id}}">{{fabricante.nome}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Modelo</label> <input type="text" ng-model="instrumento.modelo" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Numero de Patrimônio</label> <input type="text" ng-model="instrumento.patrimonio" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Número de Série</label> <input type="text" ng-model="instrumento.numeroSerie" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Certificado de Calibração</label> <input type="text" ng-model="instrumento.certificadoCalibracao" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-4">
+					<ul>
+	        			<li ng-repeat="erro in erros track by $index" class="alert alert-danger"> {{erro}}</a></li>
+	    			</ul>
+					</div>
+				</div>	
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Salvar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="voltar();">Voltar</button>
+			</form>
+		</div>
+	</div>
+
+</html>

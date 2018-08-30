@@ -1,0 +1,525 @@
+<html ng-app="agenda">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8" />
+
+<link href='resourcesEvento2/css/bootstrap.min.css' rel='stylesheet'>
+<link href='resourcesEvento2/css/fullcalendar.min.css' rel='stylesheet' />
+<link href='resourcesEvento2/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<link href='resourcesEvento2/css/personalizado.css' rel='stylesheet' />
+		
+<script src="resourcesEvento2/javascript/jquery.min.js"></script>
+<script src="resourcesEvento2/javascript/moment.min.js"></script>
+<script src="resourcesEvento2/javascript/fullcalendar.min.js"></script>
+<script src="resourcesEvento2/javascript/lang-all.js"></script>
+<script src="resourcesEvento2/javascript/calendarioEventos.js" charset="utf-8"></script>
+
+
+<script src="resourcesEvento2/javascript/jquery-ui.min.js"></script>
+<script src="resourcesEvento2/javascript/bootstrap.min.js"></script>
+
+		<link href="resourcesEvento2/css/bootstrap-datepicker.css" rel="stylesheet"/>
+		<script src="resourcesEvento2/javascript/bootstrap-datepicker.min.js"></script> 
+		<script src="resourcesEvento2/javascript/bootstrap-datepicker.pt-BR.min.js" charset="UTF-8"></script>
+		
+
+		
+<style>
+
+
+	body {
+		margin: 0px;
+
+	}
+	
+	#div-agenda-eventos {
+		max-width: 900px;
+		margin: 0 auto;
+
+	}
+	
+	.alert-box {
+			max-width: 900px;
+		margin: 0 auto;
+	padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+}
+
+.success {
+
+    background-color: #4CAF50;
+    border-color: #d6e9c6;
+    display: none;
+    color: white;
+    opacity: 1;
+}
+
+.failure {
+    color: white;
+    opacity: 1;
+    background-color: #f44336;
+    border-color: #ebccd1;
+    display: none;
+}
+
+.fc-sat{ 
+ 
+background-color: #e9fee2; }
+
+.fc-sun{ 
+ 
+background-color: #e9fee2; }
+
+.x { 
+color:#337ab7;  
+border-color: black;  
+background-color: #e9fee2; }
+
+.fc-past-ex {
+    color: #cccac7;
+}
+
+.fc-other-month.fc-day-number{
+color: #cccac7;
+}
+
+.fc-toolbar { text-transform: capitalize; }
+
+a:focus, a:hover {
+color:#f2f2f2;
+  text-decoration: none;
+}
+
+</style>
+
+
+</head>
+
+
+<h2 class="modal-title text-center">Calendário</h2>
+<br/>
+
+
+<div class="alert-box success"><span id="msg"></span></div>
+<div class="alert-box failure">Erro ao realizar a operação</div>
+
+
+
+<div id='div-agenda-eventos'></div>
+
+
+		<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title text-center">Dados do Evento</h4>
+					</div>
+					<div class="modal-body">
+						<div class="visualizar" id="ver" >
+							<dl class="dl-horizontal">
+								<dt>ID</dt>
+								<dd id="id"></dd>
+								<dt>Titulo</dt>
+								<dd id="title"></dd>
+								<dt>Descrição</dt>	
+		 						<dd><textarea disabled="true" rows="2" cols="40" id="descricao" style="resize: none;overflow-x:hidden;overflow-y:auto;border: 0 none;background-color: transparent" ></textarea></dd>
+								<dt>Tipo</dt>
+								<dd id="tipo"></dd>
+								<dt>Inicio</dt>
+								<dd id="start"></dd>
+								<dt>Fim</dt>
+								<dd id="end"></dd>
+								<dd ><br></dd>
+								<dt>Criado</dt>
+								<dd id="criado"></dd>
+								<dt>Alterado</dt>
+								<dd id="alterado"></dd>
+								<dd ><br></dd>
+								<dd >	<button type="button" class="btn btn-success" id="edit">Editar</button>
+							<button type="button" id="exclui" class="btn btn-danger" >Excluir</button>
+							<button type="button" class="btn btn-canc-edit btn-primary" data-dismiss="modal">Cancelar</button></dd>
+							</dl>
+						
+						</div>
+						<div class="form" id="alterar">
+							<form class="form-horizontal" id="myform" >
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Titulo</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" name="title" id="title" placeholder="Titulo do Evento">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
+								<div class="col-sm-10">
+									<textarea class="form-control" rows="2" id="descricao" name="descricao" placeholder="Descrição do Evento" ></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Tipo</label>
+								<div class="col-sm-4">
+									<select name="cor" class="form-control" id="color">
+										<option value="">Selecione</option>			
+											<option style="color:#FFD700;" value="#FFD700">Reunião</option>
+											<option style="color:#0071c5;" value="#0071c5">Serviço</option>
+											<option style="color:#FF4500;" value="#FF4500">Outros</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+							
+								<label for="inputEmail3" class="col-sm-2 control-label">Início</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" name="start" id="start" >
+									</div>
+										<div class="col-sm-3">
+										<select name="startHorario" id="startHorario" class="form-control">
+										  <option value="08:00">08:00</option>
+										  <option value="08:15">08:15</option>
+										  <option value="08:30">08:30</option>
+										  <option value="08:45">08:45</option>
+										  <option value="09:00">09:00</option>
+										  <option value="09:15">09:15</option>
+										  <option value="09:30">09:30</option>
+										  <option value="09:45">09:45</option>
+										  <option value="10:00">10:00</option>
+										  <option value="10:15">10:15</option>
+										  <option value="10:30">10:30</option>
+										  <option value="10:45">10:45</option>
+										  <option value="11:00">11:00</option>
+										  <option value="11:15">11:15</option>
+										  <option value="11:30">11:30</option>  
+										  <option value="11:45">11:45</option>
+										  <option value="12:00">12:00</option>
+										  <option value="12:15">12:15</option>
+										  <option value="12:30">12:30</option>  
+										  <option value="12:45">12:45</option>
+										  <option value="13:00">13:00</option>
+										  <option value="13:15">13:15</option>
+										  <option value="13:30">13:30</option>  
+										  <option value="13:45">13:45</option>					  
+										  <option value="14:00">14:00</option>
+										  <option value="14:15">14:15</option>
+										  <option value="14:30">14:30</option>  
+										  <option value="14:45">14:45</option>
+										  <option value="15:00">15:00</option>
+										  <option value="15:15">15:15</option>
+										  <option value="15:30">15:30</option>
+										  <option value="15:45">15:45</option>
+										  <option value="16:00">16:00</option>
+										  <option value="16:15">16:15</option>
+										  <option value="16:30">16:30</option>  
+										  <option value="16:45">16:45</option>
+										  <option value="17:00">17:00</option>
+										  <option value="17:15">17:15</option>
+										  <option value="17:30">17:30</option>  
+										  <option value="17:45">17:45</option>
+										  <option value="18:00">18:00</option>
+										  <option value="18:15">18:15</option>
+										  <option value="18:30">18:30</option>
+										  <option value="18:45">18:45</option>
+										  <option value="19:00">19:00</option>	
+										</select>
+							</div>
+								
+							</div>
+							<div class="form-group">
+						
+								<label for="inputEmail3" class="col-sm-2 control-label">Fim</label>
+								
+								<div class="col-sm-4">
+									<!--<input type="text" class="form-control" name="end" id="end" onchange="recarregaHorariosdisponiveis()" >-->
+									<input type="date" class="form-control" name="end" id="end" >
+								</div>
+								<div class="col-sm-3">
+									<select name="endHorario" id="endHorario" class="form-control">
+										  <option value="08:00">08:00</option>
+										  <option value="08:15">08:15</option>
+										  <option value="08:30">08:30</option>
+										  <option value="08:45">08:45</option>
+										  <option value="09:00">09:00</option>
+										  <option value="09:15">09:15</option>
+										  <option value="09:30">09:30</option>
+										  <option value="09:45">09:45</option>
+										  <option value="10:00">10:00</option>
+										  <option value="10:15">10:15</option>
+										  <option value="10:30">10:30</option>
+										  <option value="10:45">10:45</option>
+										  <option value="11:00">11:00</option>
+										  <option value="11:15">11:15</option>
+										  <option value="11:30">11:30</option>  
+										  <option value="11:45">11:45</option>
+										  <option value="12:00">12:00</option>
+										  <option value="12:15">12:15</option>
+										  <option value="12:30">12:30</option>  
+										  <option value="12:45">12:45</option>
+										  <option value="13:00">13:00</option>
+										  <option value="13:15">13:15</option>
+										  <option value="13:30">13:30</option>  
+										  <option value="13:45">13:45</option>					  
+										  <option value="14:00">14:00</option>
+										  <option value="14:15">14:15</option>
+										  <option value="14:30">14:30</option>  
+										  <option value="14:45">14:45</option>
+										  <option value="15:00">15:00</option>
+										  <option value="15:15">15:15</option>
+										  <option value="15:30">15:30</option>
+										  <option value="15:45">15:45</option>
+										  <option value="16:00">16:00</option>
+										  <option value="16:15">16:15</option>
+										  <option value="16:30">16:30</option>  
+										  <option value="16:45">16:45</option>
+										  <option value="17:00">17:00</option>
+										  <option value="17:15">17:15</option>
+										  <option value="17:30">17:30</option>  
+										  <option value="17:45">17:45</option>
+										  <option value="18:00">18:00</option>
+										  <option value="18:15">18:15</option>
+										  <option value="18:30">18:30</option>
+										  <option value="18:45">18:45</option>
+										  <option value="19:00">19:00</option>										 
+									</select>
+								</div>
+						</div>
+					<div class="form-group" id="exibirErro" style="display: none;">
+						  <div class="alert alert-danger">
+    						<span id="erro">	</span>
+  							</div>
+						 </div>
+								<input type="hidden" class="form-control" name="id" id="id">
+								<div class="form-group">
+								
+																<div class="col-sm-offset-2 col-sm-10">
+								
+									<button type="button"  class="btn btn-warning"  onclick="enviarAlteracao();" >Alterar</button>
+									<button type="button" id="vis" class="btn btn-canc-edit btn-primary">Cancelar</button>	
+								</div>
+								
+											
+			<input type="hidden" name="usuCriacao" id="usuCriacao">
+			<input type="hidden"  name="dtCriacao" id="dtCriacao">
+								</div>
+							</form>
+							
+						
+						</div>
+						<div class="visualizar" id="excluir" >
+
+            				<dt>Confirma a exclusão do evento?</dt>
+
+						      <div class="modal-footer">
+						         <button type="button" data-dismiss="modal" class="btn btn-danger" onClick="confirmarRemocao();">Sim</button>
+						            <button type="button" data-dismiss="modal" class="btn btn-canc-edit btn-primary">Não</button>
+						      </div>
+					    </div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title text-center">Novo Evento</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" id="cadastro" >
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Titulo</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" name="title" id="title" placeholder="Titulo do Evento">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
+								<div class="col-sm-10">
+										<textarea class="form-control" rows="2" id="descricao" name="descricao" placeholder="Descrição do Evento" ></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Tipo</label>
+								<div class="col-sm-4">
+									<select name="cor" class="form-control" id="color">
+										<option value="">Selecione</option>			
+											<option style="color:#FFD700;" value="#FFD700">Reunião</option>
+											<option style="color:#0071c5;" value="#0071c5">Serviço</option>
+											<option style="color:#FF4500;" value="#FF4500">Outros</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+							
+								<label for="inputEmail3" class="col-sm-2 control-label">Início</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" name="start" id="start" >
+									</div>
+										<div class="col-sm-3">
+										<select name="startHorario" id="startHorario" class="form-control">
+										  <option value="08:00">08:00</option>
+										  <option value="08:15">08:15</option>
+										  <option value="08:30">08:30</option>
+										  <option value="08:45">08:45</option>
+										  <option value="09:00">09:00</option>
+										  <option value="09:15">09:15</option>
+										  <option value="09:30">09:30</option>
+										  <option value="09:45">09:45</option>
+										  <option value="10:00">10:00</option>
+										  <option value="10:15">10:15</option>
+										  <option value="10:30">10:30</option>
+										  <option value="10:45">10:45</option>
+										  <option value="11:00">11:00</option>
+										  <option value="11:15">11:15</option>
+										  <option value="11:30">11:30</option>  
+										  <option value="11:45">11:45</option>
+										  <option value="12:00">12:00</option>
+										  <option value="12:15">12:15</option>
+										  <option value="12:30">12:30</option>  
+										  <option value="12:45">12:45</option>
+										  <option value="13:00">13:00</option>
+										  <option value="13:15">13:15</option>
+										  <option value="13:30">13:30</option>  
+										  <option value="13:45">13:45</option>					  
+										  <option value="14:00">14:00</option>
+										  <option value="14:15">14:15</option>
+										  <option value="14:30">14:30</option>  
+										  <option value="14:45">14:45</option>
+										  <option value="15:00">15:00</option>
+										  <option value="15:15">15:15</option>
+										  <option value="15:30">15:30</option>
+										  <option value="15:45">15:45</option>
+										  <option value="16:00">16:00</option>
+										  <option value="16:15">16:15</option>
+										  <option value="16:30">16:30</option>  
+										  <option value="16:45">16:45</option>
+										  <option value="17:00">17:00</option>
+										  <option value="17:15">17:15</option>
+										  <option value="17:30">17:30</option>  
+										  <option value="17:45">17:45</option>
+										  <option value="18:00">18:00</option>
+										  <option value="18:15">18:15</option>
+										  <option value="18:30">18:30</option>
+										  <option value="18:45">18:45</option>
+										  <option value="19:00">19:00</option>	
+										</select>
+							</div>
+								
+							</div>
+							<div class="form-group">
+						
+								<label for="inputEmail3" class="col-sm-2 control-label">Fim</label>
+								
+								<div class="col-sm-4">
+									<!--<input type="text" class="form-control" name="end" id="end" onchange="recarregaHorariosdisponiveis()" >-->
+									<input type="date" class="form-control" name="end" id="end" >
+								</div>
+								<div class="col-sm-3">
+									<select name="endHorario" id="endHorario" class="form-control">
+										  <option value="08:00">08:00</option>
+										  <option value="08:15">08:15</option>
+										  <option value="08:30">08:30</option>
+										  <option value="08:45">08:45</option>
+										  <option value="09:00">09:00</option>
+										  <option value="09:15">09:15</option>
+										  <option value="09:30">09:30</option>
+										  <option value="09:45">09:45</option>
+										  <option value="10:00">10:00</option>
+										  <option value="10:15">10:15</option>
+										  <option value="10:30">10:30</option>
+										  <option value="10:45">10:45</option>
+										  <option value="11:00">11:00</option>
+										  <option value="11:15">11:15</option>
+										  <option value="11:30">11:30</option>  
+										  <option value="11:45">11:45</option>
+										  <option value="12:00">12:00</option>
+										  <option value="12:15">12:15</option>
+										  <option value="12:30">12:30</option>  
+										  <option value="12:45">12:45</option>
+										  <option value="13:00">13:00</option>
+										  <option value="13:15">13:15</option>
+										  <option value="13:30">13:30</option>  
+										  <option value="13:45">13:45</option>					  
+										  <option value="14:00">14:00</option>
+										  <option value="14:15">14:15</option>
+										  <option value="14:30">14:30</option>  
+										  <option value="14:45">14:45</option>
+										  <option value="15:00">15:00</option>
+										  <option value="15:15">15:15</option>
+										  <option value="15:30">15:30</option>
+										  <option value="15:45">15:45</option>
+										  <option value="16:00">16:00</option>
+										  <option value="16:15">16:15</option>
+										  <option value="16:30">16:30</option>  
+										  <option value="16:45">16:45</option>
+										  <option value="17:00">17:00</option>
+										  <option value="17:15">17:15</option>
+										  <option value="17:30">17:30</option>  
+										  <option value="17:45">17:45</option>
+										  <option value="18:00">18:00</option>
+										  <option value="18:15">18:15</option>
+										  <option value="18:30">18:30</option>
+										  <option value="18:45">18:45</option>
+										  <option value="19:00">19:00</option>										 
+									</select>
+								</div>
+						</div>
+					<div class="form-group" id="exibirErroCadastro" style="display: none;">
+						  <div class="alert alert-danger">
+    						<span id="erroCadastro">	</span>
+  							</div>
+						 </div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="button" class="btn btn-success" id="submitchange" >Incluir</button>
+		
+									<button type="button" class="btn btn-canc-edit btn-primary" data-dismiss="modal">Cancelar</button>
+								</div>
+
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$('#vis').on("click", function() {
+				$("#alterar").hide();
+				$("#ver").show();
+				$("#excluir").hide();
+			});
+			$('#edit').on("click", function() {
+				$("#alterar").show();
+				$("#ver").hide();
+				$("#excluir").hide();
+			});
+			$('#exclui').on("click", function() {
+				$("#alterar").hide();
+				$("#ver").hide();
+				$("#excluir").show();
+			});
+		
+		</script>
+		
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

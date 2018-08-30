@@ -1,0 +1,69 @@
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8" />
+
+
+
+
+
+
+</head>
+
+
+
+<div class="col-lg-9 col-md-8" >
+
+
+<h1>Trocar Senha</h1>
+
+
+
+	<div class="card">
+		<div class="content">
+			<form id="formAgenda" ng-submit="alterarSenha();">
+			
+			
+			
+						
+			
+					<div class="row">
+					<div class="col-md-3" >
+						<div class="form-group"> 
+						<div class="form-group">
+							<label>Nova Senha</label>
+							 <input type="password" id="senha"
+								ng-model="novasenha" class="form-control border-input">
+						</div>
+						</div>
+					</div>
+					</div>
+
+				<div class="row">	
+					<div class="col-md-3">
+						<div class="form-group"> 
+						<div class="form-group">
+							<label>Repita a Nova Senha</label>
+							 <input type="password" id="senha2"
+								ng-model="novasenharepita" class="form-control border-input">
+						</div>
+						</div>
+					</div>
+					</div>
+					
+		<div class="row">
+
+					<div class="col-md-8">
+ <p ng-show="novasenha != novasenharepita" class="alert alert-danger">As senhas não conferem.</p>
+					</div>
+				</div>
+	
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-disabled="novasenha != novasenharepita || novasenha == ''  && novasenharepita == '' ">Trocar</button>
+		<button type="submit" class="btn btn-info btn-fill btn-wd"
+					ng-click="voltar();">Voltar</button>
+			</form>
+		</div>
+	</div>
+
+</html>

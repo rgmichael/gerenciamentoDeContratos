@@ -1,0 +1,89 @@
+<html ng-app="agenda">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Loja</title>
+
+<meta charset="utf-8" />
+
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
+   <meta http-equiv="Cache-control" content="no-cache">
+
+
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/js/angular-route.js"></script>
+<script type="text/javascript" src="resources/js/angular-resource.js"></script>
+<script type="text/javascript" src="resources/js/angular-animate.js"></script>
+<script type="text/javascript"
+	src="resources/js/angular-locale_pt-br.js"></script>
+
+
+<script type="text/javascript"
+	src="resources/js/bootstrap-checkbox-radio.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-notify.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/chartist.min.js"></script>
+<script type="text/javascript" src="resources/js/demo.js"></script>
+
+<script type="text/javascript" src="resources/js/jquery.mask.js"></script>
+<script type="text/javascript" src="resources/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+
+<link href="resources/css/animate.min.css" rel="stylesheet" />
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="resources/css/demo.css" rel="stylesheet" />
+<link href="resources/css/paper-dashboard.css" rel="stylesheet" />
+<link href="resources/css/themify-icons.css" rel="stylesheet" />
+
+<link href="resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="resources/css/themify-icons.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.css" rel="stylesheet">
+
+<script type="text/javascript" charset="UTF-8"  src="resources/js/app2.js"></script>
+
+
+</head>
+
+<body id="corpo">
+
+
+			<div class="content" ng-view>
+			</div>
+
+	
+</body>
+<script type="text/javascript">		
+
+	    		
+	        $.get("agenda/autenticar", function(data) {		
+	            json = JSON.parse(data);		
+	            permissao = json.permissao;	
+	            usuario = json.user;
+	            permissoes = json.permissoes;
+	            
+
+	            
+	            if(permissoes.toString()=="CLIENTE"){
+	            	location.href="inicialEquipamento.html";
+
+	            }
+	            
+	            if(permissoes.toString()=="BARBEIRO"){
+	            	location.href="inicialBarbeiro.html";
+            	
+	            	
+	            }
+	            
+	            
+	        });		
+	        		
+	    </script>
+
+</html>

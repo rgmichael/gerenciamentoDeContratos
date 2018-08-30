@@ -1,0 +1,113 @@
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+
+<div class="col-lg-9 col-md-8" ng-init="carregarCombos();" >
+
+<h1>Novo Insumo</h1>
+
+
+	<div class="card">
+		<div class="content">
+			<form id="formInsumo" ng-submit="salvar();">
+								
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>TAG</label> <input type="text" ng-model="insumo.tag" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Fabricante</label> 
+							<select ng-model="insumo.fabricante.id"
+							 id="selectFabricante"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="fabricante in fabricanteesList"  
+							  	value="{{fabricante.id}}">{{fabricante.nome}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Dimensão</label> <input type="text" ng-model="insumo.dimensao" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Lote</label> <input type="text" ng-model="insumo.lote" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Série</label> <input type="text" ng-model="insumo.serie" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Data Aquisição</label> <input type="text" ng-model="insumo.dataAquisicao" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Nota Fiscal</label> <input type="text" ng-model="insumo.notaFiscal" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Data Aplicação</label> <input type="text" ng-model="insumo.dataAplicacao" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Data Descarte</label> <input type="text" ng-model="insumo.dataDescarte" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Manifesto Descarte</label> <input type="text" ng-model="insumo.manifestoDescarte" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+					
+				<div class="row">
+					<div class="col-md-4">
+					<ul>
+	        			<li ng-repeat="erro in erros track by $index" class="alert alert-danger"> {{erro}}</a></li>
+	    			</ul>
+					</div>
+				</div>	
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Salvar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="voltar();">Voltar</button>
+			</form>
+		</div>
+	</div>
+
+</html>

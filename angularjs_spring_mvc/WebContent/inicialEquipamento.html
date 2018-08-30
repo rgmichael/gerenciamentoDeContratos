@@ -1,0 +1,244 @@
+<html ng-app="agenda">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-control" content="no-cache">
+
+<title>Loja</title>
+
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/js/angular-route.js"></script>
+<script type="text/javascript" src="resources/js/angular-resource.js"></script>
+<script type="text/javascript" src="resources/js/angular-animate.js"></script>
+<script type="text/javascript" src="resources/js/angular-locale_pt-br.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-checkbox-radio.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-notify.js"></script>
+<script type="text/javascript" src="resources/js/chartist.min.js"></script>
+<script type="text/javascript" src="resources/js/demo.js"></script>
+<script type="text/javascript" src="resources/js/jquery.mask.js"></script>
+<script type="text/javascript" src="resources/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+
+<link href="resources/css/animate.min.css" rel="stylesheet" />
+<link href="resources/css/demo.css" rel="stylesheet" />
+<link href="resources/css/paper-dashboard.css" rel="stylesheet" /> <!--  esse importo da erro no datepicker -->
+<link href="resources/css/themify-icons.css" rel="stylesheet" />
+<link href="resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="resources/css/themify-icons.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.css" rel="stylesheet">
+
+<script type="text/javascript" src="resources/js/app2.js"></script>
+
+<script type="text/javascript" src="resources/js/agendaController.js"></script>
+<script type="text/javascript" src="resources/js/areaController.js"></script>
+<script type="text/javascript" src="resources/js/insumoController.js"></script>
+<script type="text/javascript" src="resources/js/instrumentoController.js"></script>
+<script type="text/javascript" src="resources/js/fabricanteController.js"></script>
+<script type="text/javascript" src="resources/js/contratanteController.js"></script>
+<script type="text/javascript" src="resources/js/tiporotinaController.js"></script>
+<script type="text/javascript" src="resources/js/tipoequipamentoController.js"></script>
+<script type="text/javascript" src="resources/js/tipoareaController.js"></script>
+<script type="text/javascript" src="resources/js/rotinaController.js"></script>
+
+<script type="text/javascript" src="resources/js/equipamentoController.js"></script>
+<script type="text/javascript" src="resources/js/usuarioController.js"></script>
+<script type="text/javascript" src="resources/js/eventoController.js"></script>
+<script type="text/javascript" src="resources/js/buscaController.js"></script>
+
+<script type="text/javascript" src="resources/js/dirPagination.js"></script>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {margin:0;font-family:Arial}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 17px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: fixed;
+    background-color: #555;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+</style>
+
+</head>
+
+<body id="corpo">
+
+<div class="topnav" id="myTopnav" ng-controller="equipamentoController">
+
+  <a href="#listequipamento" class="active" onclick="myFunction()">Home</a>
+  <a href="#listequipamento" onclick="myFunction()">Equipamentos</a>
+  <a href="#listEvento" onclick="myFunction()">Calendário</a>
+  <a href="#listUsuario" onclick="myFunction()">Usuários</a>
+  
+  <a href="#listarea" onclick="myFunction()">Área</a>
+  <a href="#listinsumo" onclick="myFunction()">Insumos</a>
+  <a href="#listinstrumento" onclick="myFunction()">Instrumentos</a>
+  
+  <div class="dropdown">
+    <button class="dropbtn">Cadastros 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#listfabricante" onclick="myFunction()">1 - Fabricante</a>
+      <a href="#listcontratante" onclick="myFunction()">2 - Contratante</a>
+      <a href="#listrotina" onclick="myFunction()">3 - Rotinas</a>
+    </div>
+  </div> 
+  
+  <div class="dropdown">
+    <button class="dropbtn">Cadastros Básicos
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#listtipoequipamento" onclick="myFunction()">1 - Tipo de Equipamentos</a>
+      <a href="#listtipoarea" onclick="myFunction()">2 - Tipo de Áreas</a>
+      <a href="#listtiporotina" onclick="myFunction()">3 - Tipo de Rotinas</a>
+      <a href="#listtipoinstrumento" onclick="myFunction()">4 - Tipo de Instrumentos *</a>
+      <a href="#listtinsumo" onclick="myFunction()">5 - Tipo de Insumos *</a>
+    </div>
+  </div> 
+  
+    <a href="#buscaMultipla" onclick="myFunction()">Busca</a>
+  
+  <a href="#" ng-click="sair();" ><span class="glyphicon glyphicon-log-out"></span> Sair</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+<div style="padding-left:16px">
+  <h2>Gerenciamento de Contratos</h2>
+
+</div>
+
+
+<div class="container-fluid">
+	<div class="content" ng-view></div>		
+</div>
+
+</body>
+<script type="text/javascript">		
+	        $(document).ready(function(){		
+  
+            	
+            	location.href="#listequipamento";
+	        });		
+   		
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+	   
+
+</html>

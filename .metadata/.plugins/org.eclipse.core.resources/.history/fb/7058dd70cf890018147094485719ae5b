@@ -1,0 +1,175 @@
+<html ng-app="agenda">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta http-equiv="Cache-control" content="no-cache">
+
+<title>Loja</title>
+
+
+
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/js/angular-route.js"></script>
+<script type="text/javascript" src="resources/js/angular-resource.js"></script>
+<script type="text/javascript" src="resources/js/angular-animate.js"></script>
+<script type="text/javascript"
+	src="resources/js/angular-locale_pt-br.js"></script>
+
+
+<script type="text/javascript"
+	src="resources/js/bootstrap-checkbox-radio.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-notify.js"></script>
+
+<script type="text/javascript" src="resources/js/chartist.min.js"></script>
+<script type="text/javascript" src="resources/js/demo.js"></script>
+
+<script type="text/javascript" src="resources/js/jquery.mask.js"></script>
+<script type="text/javascript" src="resources/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+
+<link href="resources/css/animate.min.css" rel="stylesheet" />
+
+<link href="resources/css/demo.css" rel="stylesheet" />
+<link href="resources/css/paper-dashboard.css" rel="stylesheet" />
+<link href="resources/css/themify-icons.css" rel="stylesheet" />
+
+<link href="resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="resources/css/themify-icons.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.css" rel="stylesheet">
+
+<script type="text/javascript" src="resources/js/app2.js"></script>
+<script type="text/javascript" src="resources/js/agendaController.js"></script>
+
+
+<script type="text/javascript" src="resources/js/equipamentoController.js"></script>
+<script type="text/javascript" src="resources/js/usuarioController.js"></script>
+
+<script type="text/javascript" src="resources/js/dirPagination.js"></script>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myNavbar");
+    if (x.className === "navbar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navbar";
+    }
+}
+</script>
+
+<style type="text/css">
+
+.form-control {
+    background-color: #fffcf5;
+    border: solid  1px !important; 
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding: 7px 18px;
+    height: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;  
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {display: none;}
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    bottom:0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body id="corpo">
+
+
+
+<div class="navbar" id="myNavbar" ng-controller="equipamentoController">
+  <a href="#listequipamento" class="active">Gerenciador</a>
+  <a href="#listequipamento">Equipamentos</a>
+  <a href="#listUsuario">Usuários</a>
+  <a href="#" ng-click="sair();" ><span class="glyphicon glyphicon-log-out"></span> Sair</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+  
+	
+
+	<div class="container-fluid">
+			<div class="content" ng-view></div>		
+		</div>
+
+</body>
+<script type="text/javascript">		
+	        $(document).ready(function(){		
+  
+            	
+            	location.href="#listequipamento";
+	        });		
+	    		
+	     
+	        		
+	    </script>
+
+</html>

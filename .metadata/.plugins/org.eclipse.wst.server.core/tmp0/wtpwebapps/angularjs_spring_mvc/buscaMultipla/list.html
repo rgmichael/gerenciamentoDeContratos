@@ -1,0 +1,121 @@
+<html ng-app="agenda">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8" />
+</head>
+
+<div>
+	<br>
+	<hr>
+</div>
+
+<div ng-controller="buscaController" ng-init="listarEquipamentos();listarInsumos();" class="table-responsive" >
+
+
+ <div class="row">
+  	<div class="col-md-3">
+      	<input type="text" ng-model="procurar" class="form-control" placeholder="Procurar...">
+  	</div>
+
+</div>
+
+
+<h1>Equipamentos</h1> 
+
+<div ng-show="equipamentos.length == 0">
+	<span>- Sem registros</span>
+</div> 
+
+<div ng-show="equipamentos.length > 0">
+
+<br/>
+
+
+<br/>
+<div class="table-responsive" >
+		<table class="table table-hover">
+			<thead>
+					<td><b>TAG</b></td>
+					<td><b>Equipamento</b></td>
+					<td><b>Fabricante</b></td>
+					<td><b>Modelo</b></td>
+					<td><b>NumeroSerie</b></td>
+					<td><b>Patrimonio</b></td>
+					<td><b>Unidade</b></td>				
+			</thead>
+			<tbody>
+				 <tr dir-paginate="equipamento in equipamentos|filter:procurar |itemsPerPage:5">
+					<td>{{equipamento.tag}}</td>
+					<td>{{equipamento.equipamento}}</td>
+					<td>{{equipamento.fabricante.nome}}</td>
+					<td>{{equipamento.modelo}}</td>
+					<td>{{equipamento.numeroSerie}}</td>
+					<td>{{equipamento.patrimonio}}</td>
+					<td>{{equipamento.unidade}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+	<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+</div>
+
+
+
+
+<div>
+	<br>
+	<hr>
+</div>
+
+
+
+
+<h1>Insumos</h1>
+
+<div ng-show="insumos.length == 0">
+	<span>- Sem registros</span>
+</div> 
+
+<div ng-show="insumos.length > 0">
+	<br/>
+
+	
+	<br/>
+	<div class="table-responsive" >
+			<table class="table table-hover">
+				<thead>
+						<td><b>TAG</b></td>
+						<td><b>Fabricante</b></td>
+						<td><b>Dimensão</b></td>					
+						<td><b>Lote</b></td>
+						<td><b>Série</b></td>
+						<td><b>Data de Aquisição</b></td>
+						<td><b>Nota Fiscal</b></td>
+						<td><b>Data de Aplicação</b></td>
+						<td><b>Data de Descarte</b></td>
+						<td><b>Manifesto Descarte</b></td>
+				</thead>
+				<tbody>
+					 <tr dir-paginate="insumo in insumos|filter:procurar |itemsPerPage:5">
+						<td>{{insumo.tag}}</td>
+						<td>{{insumo.fabricante.nome}}</td>
+						<td>{{insumo.dimensao}}</td>					
+						<td>{{insumo.lote}}</td>
+						<td>{{insumo.serie}}</td>
+						<td>{{insumo.dataAquisicao}}</td>
+						<td>{{insumo.notaFiscal}}</td>
+						<td>{{insumo.dataAplicacao}}</td>
+						<td>{{insumo.dataDescarte}}</td>
+						<td>{{insumo.manifestoDescarte}}</td>
+					</tr>
+	
+				</tbody>
+			</table>
+		</div>	
+		<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+</div>
+
+</div>
+
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;angularjs_spring_mvc/WebContent/inicialCliente.html&apos; to &apos;inicialEquipamento.html&apos;" description="Rename resource &apos;inicialCliente.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/inicialCliente.html" name="inicialEquipamento.html" stamp="1522628071004" updateReferences="true"/>
+</session>

@@ -1,0 +1,123 @@
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="UTF-8" />
+</head>
+ 
+<div class="col-lg-9 col-md-8" ng-init="carregarCombos();" >
+
+<h1>Nova Rotina</h1>
+
+	<div class="card">
+		<div class="content">
+			<form id="formRotina" ng-submit="salvar();">								
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Tipo de Rotina</label> 
+							<select ng-model="rotina.tipoRotina.id"
+							 id="selectTipoRotina"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="tiporotina in tiporotinaList"  
+							  	value="{{tiporotina.id}}">{{tiporotina.nome}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Tipo Ensaio</label>
+							<input type="text" ng-model="rotina.tipoEnsaio" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Equipamento</label> 
+							<select ng-model="rotina.equipamento.id"
+							 id="selectEquipamento"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="equipamento in equipamentoList"  
+							  	value="{{equipamento.id}}">{{equipamento.equipamento}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Instrumento</label> 
+							<select ng-model="rotina.instrumento.id"
+							 id="selectInstrumento"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="instrumento in instrumentoList"  
+							  	value="{{instrumento.id}}">{{instrumento.tag}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Area</label> 
+							<select ng-model="rotina.area.id"
+							 id="selectArea"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="area in areaList"  
+							  	value="{{area.id}}">{{area.tag}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				<!-- 
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Fabricante</label> 
+							<select ng-model="equipamento.fabricante.id"
+							 id="selectFabricante"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="fabricante in fabricanteesList"  
+							  	value="{{fabricante.id}}">{{fabricante.nome}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				 -->
+				 
+				<div class="row">
+					<div class="col-md-4">
+					<ul>
+	        			<li ng-repeat="erro in erros track by $index" class="alert alert-danger"> {{erro}} </li>
+	    			</ul>
+					</div>
+				</div>
+					
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Salvar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="voltar();">Voltar</button>
+			</form>
+		</div>
+	</div>
+
+</html>

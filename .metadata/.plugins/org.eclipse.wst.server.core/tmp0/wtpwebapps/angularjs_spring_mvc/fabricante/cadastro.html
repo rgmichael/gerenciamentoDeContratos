@@ -1,0 +1,51 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<h1>Novo Fabricante</h1>
+
+	<div class="card">
+		<div class="content">
+			<form id="formInstrumento" ng-submit="salvar();">
+								
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Nome</label> <input type="text" ng-model="fabricante.nome" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Descrição</label> <input type="text" ng-model="fabricante.descricao" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Responsavel</label> <input type="text" ng-model="fabricante.responsael" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+							
+				<div class="row">
+					<div class="col-md-4">
+					<ul>
+	        			<li ng-repeat="erro in erros track by $index" class="alert alert-danger"> {{erro}}</a></li>
+	    			</ul>
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Salvar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="voltar();">Voltar</button>
+			</form>
+		</div>
+	</div>
+
+</html>

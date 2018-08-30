@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<htm>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="expires" content = "0" />
+<title>Login</title>
+
+
+    <meta name="robots" content="noindex, nofollow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-1.10.2.js"></script>
+
+
+
+<script type="text/javascript"
+	src="../resources/js/bootstrap-checkbox-radio.js"></script>
+<script type="text/javascript" src="../resources/js/bootstrap-notify.js"></script>
+<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/chartist.min.js"></script>
+<script type="text/javascript" src="../resources/js/demo.js"></script>
+
+<script type="text/javascript" src="../resources/js/jquery.mask.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-ui.js"></script>
+
+<link href="../resources/css/animate.min.css" rel="stylesheet" />
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../resources/css/demo.css" rel="stylesheet" />
+<link href="../resources/css/paper-dashboard.css" rel="stylesheet" />
+<link href="../resources/css/themify-icons.css" rel="stylesheet" />
+
+<link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="../resources/css/themify-icons.css" rel="stylesheet">
+<link href="../resources/css/jquery-ui.css" rel="stylesheet">
+
+
+
+
+<script type="text/javascript">		
+
+if (window.location.href.indexOf("error") > -1) {
+	$.notify({		
+    message: "Login ou Senha incorretos!"		
+
+},{		
+    type: 'danger',		
+    timer: 4000		
+});	
+}
+	    		
+
+	        		
+	    </script>
+<style type="text/css">
+
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall
+{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+
+
+
+</style>
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+
+            <div class="account-wall">
+ 
+                    
+                    	<form id="formulario" method="post" name="formulario"
+			action="/angularjs_spring_mvc/j_spring_security_check">
+                   
+                     <br/>
+                     
+<label>E-mail:</label>
+                <input type="text" size="5" class="form-control" style="background: #D6EEF6;"  name="j_username" id="j_username" placeholder="a@a.com"  required  autofocus>
+                
+                  <br/>
+                
+                <label>Senha:</label>
+                <input type="password" style="background: #D6EEF6;" class="form-control"  name="j_password" id="j_password" placeholder="123" required>
+                
+                  <br/>
+                 <div align="center">
+                <button class="btn btn-info btn-fill btn-wd" type="submit"  id="buttonLogin">
+                    Entrar</button>
+                     </div>
+
+                </form>
+                          <br/>
+                
+                <a href="javascript:location.href='../publico/esqueciSenha.html';" class="text-center new-account">Esqueci Minha Senha</a>
+       <br/>
+                         <a href="javascript:location.href='../publico/cadastro.html';" class="text-center new-account">Não Tenho Cadastro</a>
+                      
+            </div>
+
+             
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>

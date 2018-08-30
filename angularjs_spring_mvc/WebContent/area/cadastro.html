@@ -1,0 +1,130 @@
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+
+<!-- 
+<div class="col-lg-9 col-md-8" ng-init="carregarCombos();" >
+ -->
+
+<h1>Nova Area</h1>
+
+
+	<div class="card">
+		<div class="content">
+			<form id="formArea" ng-submit="salvar();">
+								
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>TAG</label> <input type="text" ng-model="area.tag" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Item</label> <input type="text" ng-model="area.item" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				<!-- 
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Fabricante</label> 
+							<select ng-model="equipamento.fabricante.id"
+							 id="selectFabricante"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="fabricante in fabricanteesList"  
+							  	value="{{fabricante.id}}">{{fabricante.nome}}
+							  </option>
+							</select>	
+						</div>
+					</div>
+				</div>
+				 -->
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Unidade</label> <input type="text" ng-model="area.unidade" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Local</label> <input type="text" ng-model="area.local" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Setor</label> <input type="text" ng-model="area.setor" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Serviço</label> <input type="text" ng-model="area.servico" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Classe</label> <input type="text" ng-model="area.classe" class="form-control border-input" />
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Contrato</label> <input type="text" ng-model="area.contrato" class="form-control border-input" />
+						</div>
+					</div>
+				</div>						
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Revisado</label> <input type="text" ng-model="area.revisado" class="form-control border-input" />
+						</div>
+					</div>
+				</div>						
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Altura</label> <input type="text" ng-model="area.altura" class="form-control border-input" />
+						</div>
+					</div>
+				</div>					
+				<div class="row">
+					<div class="col-md-8">
+						<div class="form-group">
+							<label>Volume</label> <input type="text" ng-model="area.volume" class="form-control border-input" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+					<ul>
+	        			<li ng-repeat="erro in erros track by $index" class="alert alert-danger"> {{erro}}</a></li>
+	    			</ul>
+					</div>
+				</div>	
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Salvar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="voltar();">Voltar</button>
+			</form>
+		</div>
+	</div>
+
+</html>

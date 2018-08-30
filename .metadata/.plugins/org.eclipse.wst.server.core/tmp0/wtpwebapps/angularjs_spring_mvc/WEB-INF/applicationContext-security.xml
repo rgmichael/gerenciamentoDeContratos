@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+ http://www.springframework.org/schema/security 
+ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	
+	<global-method-security secured-annotations="enabled" />
+
+	<http auto-config="true" 
+		access-denied-page="/negado/acesso-negado.html"
+		use-expressions="true">
+
+		<intercept-url pattern="/publico/**" access="permitAll" /> 
+
+		<intercept-url pattern="/agendaCliente/**" access="isAuthenticated() and hasAnyRole('CLIENTE')"/>
+		<intercept-url pattern="/agendaBarbeiro/**" access="isAuthenticated() and hasAnyRole('BARBEIRO')"/>
+		
+		<intercept-url pattern="/agendalistBarbeiro" access="isAuthenticated() and hasAnyRole('BARBEIRO')"/>
+		
+		<intercept-url pattern="/inicialCliente.html" access="isAuthenticated() and hasAnyRole('CLIENTE')"/>
+		<intercept-url pattern="/inicialBarbeiro.html" access="isAuthenticated() and hasAnyRole('BARBEIRO')"/>
+		<intercept-url pattern="/inicial.html" access="isAuthenticated() and hasAnyRole('BARBEIRO','CLIENTE','ADMIN')"/> 
+	
+	<intercept-url pattern="/inicialEquipamento.html" access="isAuthenticated() and hasAnyRole('CLIENTE')"/>	
+	<intercept-url pattern="/equipamento/**" access="isAuthenticated() and hasAnyRole('CLIENTE')"/>
+		
+		<form-login login-page="/publico/login.html"
+			always-use-default-target="true" default-target-url="/inicial.html"
+			authentication-failure-url="/publico/login.html?login_error=1" />
+
+		<remember-me token-validity-seconds="600" />
+		
+		<session-management invalid-session-url="/publico/login.html"
+		    session-fixation-protection="migrateSession"> 
+        	<concurrency-control 
+        	max-sessions="100"
+        	expired-url="/publico/login.html"
+        	error-if-maximum-exceeded="true" /> 
+    	</session-management>
+		
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="md5"  />
+			<jdbc-user-service data-source-ref="springDataSource"
+
+				users-by-username-query="SELECT email as username
+												,senha as password
+												,'true' as enable
+									   		FROM gestao.usuario 
+									   	   WHERE ativo = '1' 
+									         and upper(email) = upper(?)"
+
+				authorities-by-username-query="SELECT u.email as username
+													 ,p.descricao as authority 
+											 	FROM gestao.usuario u 
+											  	join gestao.perfil p on u.perfil_id = p.id 
+											   WHERE u.ativo = '1'
+											     AND upper(u.email) = upper(?)" />
+		</authentication-provider>
+	</authentication-manager>
+
+</b:beans>

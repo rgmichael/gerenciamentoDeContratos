@@ -1,0 +1,77 @@
+<html ng-app="agenda">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8" />
+</head>
+
+<div ng-controller="contratanteController" ng-init="listarContratante();" class="table-responsive" >
+
+<h1>Contratante</h1> 
+<br/>
+ <div class="row">
+  	<div class="col-md-3">
+      	<input type="text" ng-model="procurar" class="form-control" placeholder="Procurar...">
+  	</div>
+	<div class="col-md-2">
+		<button type="button" class="btn btn-info btn-fill btn-wd" ng-click="novo();">Novo</button>
+	</div>
+</div>
+
+<br/>
+<div class="table-responsive" >
+		<table class="table table-hover">
+			<thead>
+					<td><b>Razão Social</b></td>
+					<td><b>Endereço</b></td>
+					<td><b>CNPJ</b></td>					
+					<td><b>Inscrição Municipal</b></td>
+					<td><b>Inscrição Estadual</b></td>
+					<td><b>Telefone</b></td>
+					<td><b>Site</b></td>
+					<td><b>Email</b></td>
+					
+					<td align="center"><b>Alterar</b></td>
+					<td align="center"><b>Excluir</b></td>
+			</thead>
+			<tbody>
+				 <tr dir-paginate="contratante in contratantes|filter:procurar |itemsPerPage:5">
+					<td>{{contratante.razaoSocial}}</td>
+					<td>{{contratante.endereco}}</td>
+					<td>{{contratante.cnpj}}</td>					
+					<td>{{contratante.inscricaoMunicipal}}</td>
+					<td>{{contratante.inscricaoEstadual}}</td>
+					<td>{{contratante.telefone}}</td>
+					<td>{{contratante.site}}</td>
+					<td>{{contratante.email}}</td>
+					
+					<td  align="center"> <a href ng-click="editarcontratante(contratante.id);">
+					  <img alt="Alterar" src="resources/img/edit-icon.png" border="0">
+					</a></td>
+					<td  align="center"> <a href ng-click="excluirContratante(contratante.id);">
+					 <img alt="Excluir" src="resources/img/delete-icon.png" data-toggle="modal" data-target="#confirm" border="0">
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+	<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+
+<div class="modal fade" id="confirm" role="dialog">
+  <div class="modal-dialog modal-md">
+
+    <div class="modal-content">
+      <div class="modal-body">
+            <p>confirma a exclusão do contratante?</p>
+      </div>
+      <div class="modal-footer">
+         <button type="button" data-dismiss="modal" class="btn btn-danger" ng-click="confirmarRemocao();">Sim</button>
+            <button type="button" data-dismiss="modal" class="btn btn-default">Não</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</html>
